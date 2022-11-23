@@ -52,15 +52,7 @@
 
 ## 关于本脚本
 
-- 添加脚本 `wzxy-healthcheck.py`，适配部分学校的打卡项目“健康打卡”。
-
-  > 关于本项目中的两个脚本：
-  >
-  > - `wzxy-dailyreport.py`，对应打卡项目“日检日报”（一天多时段打卡，需要提交位置信息与体温信息）。
-  >
-  > - `wzxy-healthcheck.py`，对应打卡项目“健康打卡”（一天只需打卡一次，仅需提交位置信息）。
-  >
-  > 两个脚本请按需启用，详见下方使用指南。
+- 添加脚本 `wzxy-dailyreport.py`，适配部分学校的打卡项目“健康打卡”。
 
 - 利用 [actions/cache@v3](https://github.com/marketplace/actions/cache) 实现缓存 jwsession，避免频繁登录可能导致的账号登录问题。
 
@@ -246,10 +238,6 @@
 
   > **注意：**
   >
-  > 出于开发者个人使用需要，`wzxy_healthcheck.yml`里设定的`environment`参数默认为`environment: WZXY_CONFIG_02`；
-  >
-  > 如果你严格按照上述教程操作且没有多账户/多地点打卡需要，请找到该行代码并将02改为01。
-  >
   > 关于多账户/多配置文件的设置，请参考文末“常见问题”
 
 ### Step4 手动测试脚本运行
@@ -258,7 +246,6 @@
 
 - 左侧边栏点击需要测试的脚本：
   - `WZXY_DailyReport`：对应脚本“`wzxy-dailyreport.py`”，打卡项目“日检日报”。
-  - `WZXY_HealthCheck`：对应脚本“`wzxy-healthcheck.py`”，打卡项目“健康打卡”。
 
 以测试 `WZXY_DailyReport` 为例：
 
@@ -274,10 +261,10 @@
 
 - 如果出现以下情况：
   - 2分钟后仍未自动打卡。
-  - Github Actions 界面最新的 workflow run `WZXY_HealthCheck` 状态为红色错误。
+  - Github Actions 界面最新的 workflow run `WZXY_dailyreport` 状态为红色错误。
   - 以及其他错误情况。
 
-  请在Github Actions 配置界面中，打开最新的 Workflow run `WZXY_HealthCheck`，查看错误日志，并检查自己的参数配置是否正确。
+  请在Github Actions 配置界面中，打开最新的 Workflow run `WZXY_dailyreport`，查看错误日志，并检查自己的参数配置是否正确。
 
 下图为脚本正常运行时，Github Action 的日志输出： 
 ![正常打卡](https://s2.loli.net/2022/10/17/upf6tngqr8AolUL.png)
@@ -318,8 +305,7 @@
    - 欢迎提 issue。
 
   <details>
-
-## 抓包大致方法
+    <summary><b>抓包大致方法</b></summary>
 
 ![cap-howto](https://i.loli.net/2021/08/07/VBrtzGnQEJc5XF4.png)
 
